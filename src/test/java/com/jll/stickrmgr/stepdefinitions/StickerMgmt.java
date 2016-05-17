@@ -39,16 +39,14 @@ public class StickerMgmt {
         }
 	}
 
-	@Given("^I have a valid (album)$")
+	@Given("^I have a valid album with name (album_name)$")
 	public void i_have_a_valid_album(String deckName) throws Throwable {
-		//JpaDeckRepository deckRepo = new JpaDeckRepository();
 	    aDeck = new Deck(deckName);
 	    deckRepo.save(aDeck);
 	}
 
 	@Then("^I add the sticker to the album$")
 	public void i_add_the_sticker_to_the_album() throws Throwable {
-		//JpaCardRepository cardRepo = new JpaCardRepository();
 	    aCard.setDeck(aDeck);
 	    cardRepo.save(aCard);
 	}
