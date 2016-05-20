@@ -42,7 +42,7 @@ public class SpringDataJPAConfig {
     LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
     emf.setDataSource(dataSource());
     emf.setPersistenceUnitName("sticker");
-   emf.setJpaVendorAdapter(jpaVendorAdapter());
+    emf.setJpaVendorAdapter(jpaVendorAdapter());
     emf.setPackagesToScan("com.jll.stickrmgr.domain");
     return emf;
   }

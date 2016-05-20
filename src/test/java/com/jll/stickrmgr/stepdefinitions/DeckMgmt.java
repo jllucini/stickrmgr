@@ -1,5 +1,7 @@
 package com.jll.stickrmgr.stepdefinitions;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,9 @@ import org.springframework.util.Assert;
 
 import com.jll.stickrmgr.db.DeckRepository;
 import com.jll.stickrmgr.db.jpa.JpaDeckRepository;
-import com.jll.stickrmgr.domain.Deck;
+import com.jll.stickrmgr.domain.*;
+import com.jll.stickrmgr.system.SimpleManager;
+import com.jll.stickrmgr.system.Manager;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*; 
@@ -17,21 +21,21 @@ import cucumber.api.java.en.*;
 @Transactional
 public class DeckMgmt {
 
-	@Autowired
-	DeckRepository deckRepo;
+	private Manager manager = new SimpleManager();
 	
 	private Deck aDeck;
 	
 	@Given("^I am a registered user$")
-	public void i_am_a_registered_user() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
+	public void i_am_a_registered_user(List<UserData> user) throws Throwable {
+		for (UserData userData : user) {
+			manager.loginUser(userData);
+        }
 	}
 
 	@When("^I request to create a deck with name (.+)$")
 	public void i_request_to_create_a_deck_with_name(String deckName) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    aDeck = new Deck(deckName);
+		aDeck = new Deck(deckName);
 	}
 
 	@When("^The name is valid$")
@@ -40,12 +44,12 @@ public class DeckMgmt {
 		String deckName = aDeck.getName();
 	    Assert.notNull(deckName);
 	    Assert.isTrue(!deckName.isEmpty());
-	    Assert.isNull(deckRepo.findByName(deckName));
+	    Assert.isNull(manager.findDeckByName(deckName));
 	}
 
 	@Then("^The system creates a valid empty deck$")
 	public void the_system_creates_a_valid_empty_deck() throws Throwable {
-	    deckRepo.save(aDeck);
+		manager.createDeck(aDeck);
 	}
 
 	@When("^I request to remove a deck$")

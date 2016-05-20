@@ -3,7 +3,9 @@ Feature: Deck Management
 	A registered user creates a card deck
 	
 	Background:
-	Given I am a registered user
+	Given I am a registered user 
+			| username	| password	|
+			|	joseluis	|	abcd123		|
 	
 	Scenario: Successful Deck Creation
 	When I request to create a deck with name "uefa2016"
