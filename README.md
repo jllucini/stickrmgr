@@ -1,2 +1,2 @@
 # stickrmgr
-# Readme 2
+# Java Lab: Cucumber, Spring JPA, Gradle
