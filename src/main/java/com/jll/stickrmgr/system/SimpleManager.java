@@ -2,8 +2,6 @@ package com.jll.stickrmgr.system;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-
 import com.jll.stickrmgr.db.DeckRepository;
 import com.jll.stickrmgr.db.CardRepository;
 import com.jll.stickrmgr.domain.Card;
@@ -13,7 +11,7 @@ import com.jll.stickrmgr.domain.UserData;
 @Service
 public class SimpleManager implements Manager{
 
-	private static UserData userData;
+	private UserData userData;
 
 	@Autowired
 	DeckRepository deckRepo;

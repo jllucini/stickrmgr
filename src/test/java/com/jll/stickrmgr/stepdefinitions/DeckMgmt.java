@@ -7,13 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.util.Assert;
-
-import com.jll.stickrmgr.db.DeckRepository;
-import com.jll.stickrmgr.db.jpa.JpaDeckRepository;
 import com.jll.stickrmgr.domain.*;
-import com.jll.stickrmgr.system.SimpleManager;
 import com.jll.stickrmgr.system.Manager;
-
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*; 
 
@@ -21,9 +16,11 @@ import cucumber.api.java.en.*;
 @Transactional
 public class DeckMgmt {
 
-	private Manager manager = new SimpleManager();
+	@Autowired
+	private Manager manager ;
 	
-	private Deck aDeck;
+	private String deckName;
+	
 	
 	@Given("^I am a registered user$")
 	public void i_am_a_registered_user(List<UserData> user) throws Throwable {
@@ -32,48 +29,48 @@ public class DeckMgmt {
         }
 	}
 
-	@When("^I request to create a deck with name (.+)$")
-	public void i_request_to_create_a_deck_with_name(String deckName) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-		aDeck = new Deck(deckName);
+	// Deck Creation
+	
+	@When("^I request to create a deck with name \"([^\"]*)\"$")
+	public void i_request_to_create_a_deck_with_name(String name) throws Throwable {
+		deckName = name;
 	}
 
 	@When("^The name is valid$")
 	public void the_name_is_valid() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions	
-		String deckName = aDeck.getName();
-	    Assert.notNull(deckName);
-	    Assert.isTrue(!deckName.isEmpty());
-	    Assert.isNull(manager.findDeckByName(deckName));
+	    Assert.isTrue(manager.isValidNewDeckName(deckName));
 	}
 
 	@Then("^The system creates a valid empty deck$")
 	public void the_system_creates_a_valid_empty_deck() throws Throwable {
+		Deck aDeck = new Deck(deckName); 
 		manager.createDeck(aDeck);
 	}
 
-	@When("^I request to remove a deck$")
-	public void i_request_to_remove_a_deck() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
-
-	@When("^I provide an invalid deck name$")
-	public void i_provide_an_invalid_deck_name() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	@When("^The name is invalid$")
+	public void the_name_is_invalid() throws Throwable {
+	    Assert.isTrue(!manager.isValidNewDeckName(deckName));
 	}
 
 	@Then("^The system refuses the create action$")
 	public void the_system_refuses_the_create_action() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
+	
+	// Deck removal
+	@When("^I request to remove a deck with name \"([^\"]*)\"$")
+	public void i_request_to_remove_a_deck_with_name(String name) throws Throwable {
+		deckName = name;
+	}
 
+	@When("^The deck exists and request confirmation$")
+	public void the_deck_exists_and_request_confirmation() throws Throwable {
+	    Assert.isTrue(manager.isExistingDeckName(deckName));
+	}
+	
 	@Then("^The system removes the deck$")
 	public void the_system_removes_the_deck() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    manager.removeDeckByName(deckName);
 	}
 
 	@Then("^A confirmation message is provided$")
@@ -81,11 +78,11 @@ public class DeckMgmt {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
-
-	@Then("^The system dont removes the deck$")
-	public void the_system_dont_removes_the_deck() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	
+	@When("^The deck doesnt exist$")
+	public void the_deck_doesnt_exist() throws Throwable {
+		boolean b = manager.isExistingDeckName(deckName);
+	    Assert.isTrue(!b);
 	}
 
 	@Then("^A warning message is provided$")

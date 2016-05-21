@@ -4,19 +4,15 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.jll.stickrmgr.db.DeckRepository;
-import com.jll.stickrmgr.db.SpringDataJPAConfig;
-import com.jll.stickrmgr.db.jpa.JpaCardRepository;
-import com.jll.stickrmgr.db.jpa.JpaDeckRepository;
+import org.springframework.util.Assert;
 import com.jll.stickrmgr.domain.Card;
 import com.jll.stickrmgr.domain.Deck;
+import com.jll.stickrmgr.system.Manager;
 
-import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.*; 
 
 @ContextConfiguration("classpath:cucumber.xml")
@@ -24,13 +20,28 @@ import cucumber.api.java.en.*;
 public class StickerMgmt {
 
 	@Autowired
-	DeckRepository deckRepo;
+	private Manager manager ;
 	
-	@Autowired
-	JpaCardRepository cardRepo;
+	private Card   aCard;
+	private String aDeck;
 	
-	private Card aCard;
-	private Deck aDeck;
+	@Before("@AddDeck")
+	public void beforeScenario() {
+		Deck aDeck = new Deck("uefa2016");
+		manager.createDeck(aDeck);
+	}
+	
+	@After("@AddDeck")
+	public void afterScenario() {
+		manager.removerCardFromDeck(aCard, "uefa2016");
+		manager.removeDeckByName("uefa2016");
+	}
+	
+	@Given("^I have a valid deck with name \"([^\"]*)\"$")
+	public void i_have_a_valid_deck_with_name(String deckName) throws Throwable {
+		aDeck = deckName;
+		Assert.isTrue(manager.isExistingDeckName(deckName));
+	}
 	
 	@Given("^I have got a sticker$")
 	public void i_have_got_a_sticker(List<Card> card) throws Throwable {
@@ -39,16 +50,10 @@ public class StickerMgmt {
         }
 	}
 
-	@Given("^I have a valid album with name (album_name)$")
-	public void i_have_a_valid_album(String deckName) throws Throwable {
-	    aDeck = new Deck(deckName);
-	    deckRepo.save(aDeck);
-	}
-
-	@Then("^I add the sticker to the album$")
-	public void i_add_the_sticker_to_the_album() throws Throwable {
-	    aCard.setDeck(aDeck);
-	    cardRepo.save(aCard);
+	@Then("^I add the sticker to the deck$")
+	public void i_add_the_sticker_to_the_deck() throws Throwable {
+	    int numCards = manager.addCardToDeck(aCard, aDeck);
+	    Assert.isTrue(numCards == 1);
 	}
 
 }
