@@ -23,7 +23,7 @@ public interface Manager {
 
 	boolean isExistingDeckName(String deckName);
 	
-	int addCardToDeck(Card card, String deckName);
+	Card addCardToDeck(Card card, String deckName);
 
 	void removeDeckByName(String string);
 

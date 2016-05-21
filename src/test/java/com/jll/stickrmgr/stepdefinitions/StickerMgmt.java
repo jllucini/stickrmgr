@@ -31,7 +31,7 @@ public class StickerMgmt {
 		manager.createDeck(aDeck);
 	}
 	
-	@After("@AddDeck")
+	@After("@RemoveDeck")
 	public void afterScenario() {
 		manager.removerCardFromDeck(aCard, "uefa2016");
 		manager.removeDeckByName("uefa2016");
@@ -52,8 +52,13 @@ public class StickerMgmt {
 
 	@Then("^I add the sticker to the deck$")
 	public void i_add_the_sticker_to_the_deck() throws Throwable {
-	    int numCards = manager.addCardToDeck(aCard, aDeck);
-	    Assert.isTrue(numCards == 1);
+	    aCard = manager.addCardToDeck(aCard, aDeck);
+	    Assert.isTrue(aCard.getCount() > 0);
 	}
 
+	@Then("^The count of stickers is (\\d+)$")
+	public void the_count_of_stickers_is(int aNum) throws Throwable {
+		int numCards = aCard.getCount();
+	    Assert.isTrue(numCards == aNum);
+	}
 }

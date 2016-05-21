@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 143971726,
+  "duration": 145775532,
   "status": "passed"
 });
 formatter.scenario({
@@ -55,11 +55,16 @@ formatter.step({
   "name": "I add the sticker to the deck",
   "keyword": "Then "
 });
+formatter.step({
+  "line": 10,
+  "name": "The count of stickers is 1",
+  "keyword": "And "
+});
 formatter.match({
   "location": "StickerMgmt.i_have_got_a_sticker(Card\u003e)"
 });
 formatter.result({
-  "duration": 189694442,
+  "duration": 163542575,
   "status": "passed"
 });
 formatter.match({
@@ -72,18 +77,121 @@ formatter.match({
   "location": "StickerMgmt.i_have_a_valid_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 340531776,
+  "duration": 287214984,
   "status": "passed"
 });
 formatter.match({
   "location": "StickerMgmt.i_add_the_sticker_to_the_deck()"
 });
 formatter.result({
-  "duration": 53608403,
+  "duration": 23641434,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "1",
+      "offset": 25
+    }
+  ],
+  "location": "StickerMgmt.the_count_of_stickers_is(int)"
+});
+formatter.result({
+  "duration": 5273455939,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 13,
+  "name": "Add another sticker to the album",
+  "description": "",
+  "id": "addsticker;add-another-sticker-to-the-album",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 12,
+      "name": "@RemoveDeck"
+    }
+  ]
+});
+formatter.step({
+  "line": 14,
+  "name": "I have got a sticker",
+  "rows": [
+    {
+      "cells": [
+        "code",
+        "description"
+      ],
+      "line": 15
+    },
+    {
+      "cells": [
+        "142",
+        "iniesta"
+      ],
+      "line": 16
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 17,
+  "name": "I have a valid deck with name \"uefa2016\"",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 18,
+  "name": "I add the sticker to the deck",
+  "keyword": "Then "
+});
+formatter.step({
+  "line": 19,
+  "name": "The count of stickers is 2",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "StickerMgmt.i_have_got_a_sticker(Card\u003e)"
+});
+formatter.result({
+  "duration": 3146987,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "uefa2016",
+      "offset": 31
+    }
+  ],
+  "location": "StickerMgmt.i_have_a_valid_deck_with_name(String)"
+});
+formatter.result({
+  "duration": 4752681,
+  "status": "passed"
+});
+formatter.match({
+  "location": "StickerMgmt.i_add_the_sticker_to_the_deck()"
+});
+formatter.result({
+  "duration": 34576510,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "2",
+      "offset": 25
+    }
+  ],
+  "location": "StickerMgmt.the_count_of_stickers_is(int)"
+});
+formatter.result({
+  "duration": 5328603195,
   "status": "passed"
 });
 formatter.after({
-  "duration": 53563044,
+  "duration": 6471112263,
   "status": "passed"
 });
 formatter.uri("resources/deckmagmt.feature");
@@ -126,7 +234,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 32772874,
+  "duration": 30885508,
   "status": "passed"
 });
 formatter.scenario({
@@ -162,21 +270,21 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_create_a_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 1626825,
+  "duration": 1580953,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_name_is_valid()"
 });
 formatter.result({
-  "duration": 4314404,
+  "duration": 12363678,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_system_creates_a_valid_empty_deck()"
 });
 formatter.result({
-  "duration": 3566860,
+  "duration": 3866318,
   "status": "passed"
 });
 formatter.scenarioOutline({
@@ -257,7 +365,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 2451268,
+  "duration": 2423455,
   "status": "passed"
 });
 formatter.scenario({
@@ -296,22 +404,22 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_create_a_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 1507455,
+  "duration": 2297454,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_name_is_invalid()"
 });
 formatter.result({
-  "duration": 6945535,
+  "duration": 7317401,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_system_refuses_the_create_action()"
 });
 formatter.result({
-  "duration": 4075925,
-  "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.the_system_refuses_the_create_action(DeckMgmt.java:62)\n\tat ✽.Then The system refuses the create action(resources/deckmagmt.feature:18)\n",
+  "duration": 4524236,
+  "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.the_system_refuses_the_create_action(DeckMgmt.java:57)\n\tat ✽.Then The system refuses the create action(resources/deckmagmt.feature:18)\n",
   "status": "pending"
 });
 formatter.background({
@@ -346,7 +454,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 2789225,
+  "duration": 2729265,
   "status": "passed"
 });
 formatter.scenario({
@@ -387,29 +495,29 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_remove_a_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 1648261,
+  "duration": 2102289,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_deck_exists_and_request_confirmation()"
 });
 formatter.result({
-  "duration": 5393017,
+  "duration": 7333297,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_system_removes_the_deck()"
 });
 formatter.result({
-  "duration": 8654681,
+  "duration": 6269153,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.a_confirmation_message_is_provided()"
 });
 formatter.result({
-  "duration": 1763206,
-  "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.a_confirmation_message_is_provided(DeckMgmt.java:84)\n\tat ✽.And A confirmation message is provided(resources/deckmagmt.feature:27)\n",
+  "duration": 2189331,
+  "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.a_confirmation_message_is_provided(DeckMgmt.java:79)\n\tat ✽.And A confirmation message is provided(resources/deckmagmt.feature:27)\n",
   "status": "pending"
 });
 formatter.background({
@@ -444,7 +552,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 3491636,
+  "duration": 2961772,
   "status": "passed"
 });
 formatter.scenario({
@@ -480,22 +588,22 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_remove_a_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 1717687,
+  "duration": 4906314,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_deck_doesnt_exist()"
 });
 formatter.result({
-  "duration": 3689499,
+  "duration": 7705530,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.a_warning_message_is_provided()"
 });
 formatter.result({
-  "duration": 1751812,
-  "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.a_warning_message_is_provided(DeckMgmt.java:96)\n\tat ✽.Then A warning message is provided(resources/deckmagmt.feature:32)\n",
+  "duration": 2668104,
+  "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.a_warning_message_is_provided(DeckMgmt.java:91)\n\tat ✽.Then A warning message is provided(resources/deckmagmt.feature:32)\n",
   "status": "pending"
 });
 });

@@ -13,6 +13,10 @@ import com.jll.stickrmgr.domain.Deck;
 public interface CardRepository extends JpaRepository<Card, Long>{
 	
 	Card save(Card card);
+	
 	List<Card> findByDeck(String deck);
+	
+	Card findByCode(String code);
+	
 	int countByDeckAndCode(Deck deck, String code);
 }

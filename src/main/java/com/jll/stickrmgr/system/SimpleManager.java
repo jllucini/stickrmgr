@@ -8,6 +8,8 @@ import com.jll.stickrmgr.domain.Card;
 import com.jll.stickrmgr.domain.Deck;
 import com.jll.stickrmgr.domain.UserData;
 
+import groovyjarjarantlr.collections.List;
+
 @Service
 public class SimpleManager implements Manager{
 
@@ -59,11 +61,18 @@ public class SimpleManager implements Manager{
 	}
 
 	@Override
-	public int addCardToDeck(Card card, String deckName) {
+	public Card addCardToDeck(Card aCard, String deckName) {
 		Deck deck = deckRepo.findByName(deckName);
-		card.setDeck(deck);
-		cardRepo.save(card);
-		return cardRepo.countByDeckAndCode(deck, card.getCode());
+		Card card = cardRepo.findByCode(aCard.getCode());
+		if (card != null){
+			card.incrementCount();
+		} else {
+			card = aCard;
+			card.setDeck(deck);
+			card.setCount(1);
+			cardRepo.save(card);
+		}
+		return card;
 	}
 
 	@Override
