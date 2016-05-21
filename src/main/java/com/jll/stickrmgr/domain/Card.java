@@ -29,12 +29,16 @@ public class Card implements Serializable {
 	@JoinColumn(name="deck_id")
 	private Deck deck;
 	
-	private Card() {}
+	@Column(name="num_cards")
+	private int count = 0;	
+	
+	public Card() {}
 	
 	public Card(String code, String description, Deck deck) {
 		this.code = code;
 		this.description = description;
 		this.deck = deck;
+		this.count = 1;
 	}
 	
 	public void setDeck(Deck aDeck){
@@ -55,5 +59,13 @@ public class Card implements Serializable {
 	
 	public Deck getDeck(){
 		return deck;
+	}
+	
+	public int getCount(){
+		return count;
+	}
+	
+	public void setCount(int count){
+		this.count = count;
 	}
 }

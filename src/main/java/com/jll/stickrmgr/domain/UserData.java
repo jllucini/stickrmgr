@@ -25,6 +25,8 @@ public class UserData {
 	@OneToMany(mappedBy="user")
 	private List<Deck> deck;	
 	
+	public UserData(){}
+	
 	public UserData(String userName, String aPassw) {
 		username = userName;
 		password = aPassw;

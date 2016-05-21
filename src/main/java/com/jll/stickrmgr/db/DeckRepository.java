@@ -10,10 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jll.stickrmgr.domain.Card;
 import com.jll.stickrmgr.domain.Deck;
 
+/**
+ * Repository interface with operations for {@link Sticker} persistence.
+ */
 public interface DeckRepository  extends JpaRepository<Deck, Long>{
 	
 	Deck save (Deck deck);
 	
-	//@Query("select name from Deck d where d.name=?1")
+	void removeByName(String deckName);
+	
 	Deck findByName(String deckName);
 }

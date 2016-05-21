@@ -29,6 +29,8 @@ public class Deck {
 	@JoinColumn(name="user_id")
 	private UserData user;
 	
+	public Deck() {}
+	
 	public Deck(String name) {
 		this.name = name;
 	}

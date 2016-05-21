@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jll.stickrmgr.db.CardRepository;
 import com.jll.stickrmgr.domain.Card;
 
-@Repository
-public class JpaCardRepository implements CardRepository {
+//@Repository
+public class JpaCardRepository  {
 
 	@PersistenceContext
 	private EntityManager entityManager;
