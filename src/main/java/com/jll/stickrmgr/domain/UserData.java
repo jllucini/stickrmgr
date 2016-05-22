@@ -9,13 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name = "userdata")
 public class UserData {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	
 	@Column(unique = true)
 	private String username;		
 
@@ -32,15 +29,19 @@ public class UserData {
 		password = aPassw;
 	}
 	
-	public Long getId() {
-		return id;
-	}
-	
 	public String getUsername() {
 		return username;
 	}
 	
 	public String getPassword() {
 		return password;
-	}	
+	}
+	
+	public void setUsername(String user){
+		this.username = user;
+	}
+	
+	public void setPassword(String pwd){
+		this.password = pwd;
+	}
 }

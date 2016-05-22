@@ -34,15 +34,15 @@ public class Deck {
 	
 	public Deck() {}
 	
-	public Deck(String name) {
+	public Deck(String name, UserData user) {
 		this.name = name;
+		this.user = user;
 	}
 
-	
-	public void setUser(UserData aUser){
-		this.user = aUser;
+	public UserData getUser(){
+		return user;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -51,7 +51,12 @@ public class Deck {
 		return name;
 	}
 	
-	public UserData getUser(){
-		return user;
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	public void setUser(UserData userData) {
+		this.user = userData;
+	}
+	
 }

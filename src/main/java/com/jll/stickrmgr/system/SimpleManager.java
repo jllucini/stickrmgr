@@ -8,7 +8,9 @@ import com.jll.stickrmgr.db.DeckRepository;
 import com.jll.stickrmgr.db.UserRepository;
 import com.jll.stickrmgr.db.CardRepository;
 import com.jll.stickrmgr.domain.Card;
+import com.jll.stickrmgr.domain.CardDTO;
 import com.jll.stickrmgr.domain.Deck;
+import com.jll.stickrmgr.domain.DeckDTO;
 import com.jll.stickrmgr.domain.UserData;
 
 @Service
@@ -22,32 +24,31 @@ public class SimpleManager implements Manager{
 	@Autowired
 	CardRepository cardRepo;
 	
+	@Autowired
+	UserRepository userRepo;
+	
 	// Operations by User
 	
 	@Override
 	public void loginUser(UserData userData) {
-		// TODO Auto-generated method stub
+		// TO review
 		this.userData = userData;
+		userRepo.save(userData);
 	}
 
 	@Override
-	public void logoutUser(String userName) {
-		// TODO Auto-generated method stub
+	public void logoutUser(UserData userName) {
+		// To review
 		this.userData = null;
 	}
 	
 	// Operations by Deck
 	
 	@Override
-	public long createDeck(Deck deck){
-		deck.setUser(userData);
+	public long createDeck(DeckDTO deckDTO){
+		Deck deck = new Deck(deckDTO.getName(), userData);
 		deckRepo.save(deck);
 		return 0;
-	}
-	
-	@Override
-	public void removeDeck(Deck deck) {
-		deckRepo.delete(deck);		
 	}
 	
 	@Override
@@ -72,26 +73,24 @@ public class SimpleManager implements Manager{
 	}
 
 	@Override
-	public int addCardToDeck(String deckName, Card aCard) {
+	public int addCardToDeck(CardDTO aCard, String deckName) {
 		Deck deck = deckRepo.findByNameAndUser(deckName, userData);
 		Card card = cardRepo.findByCodeAndDeck(aCard.getCode(), deck);
 		if (card != null){
 			card.incrementCount();
-			cardRepo.save(card);
 		} else {
-			card = aCard;
-			card.setDeck(deck);
-			card.setCount(1);
-			cardRepo.save(card);
+			card = new Card(aCard.getCode(), aCard.getDescription(), deck);
+			
 		}
+		cardRepo.save(card);
 		return card.getCount();
 	}
 
 	// Card Operations
 	
 	@Override
-	public boolean removeCardByDeck(Card aCard, String deckName) {
-		boolean ok = false;
+	public int removeCardByDeck(CardDTO aCard, String deckName) {
+		int result = 0;
 		Card auxCard = findCardByDeck(aCard, deckName);
 		if (auxCard != null){
 			auxCard.substractCount();
@@ -99,13 +98,13 @@ public class SimpleManager implements Manager{
 			if (auxCard.getCount() == 0){
 				cardRepo.delete(auxCard);
 			}
-			ok = true;
+			result = auxCard.getCount();
 		}
-		return ok;
+		return result;
 	}
 
 	@Override
-	public Card findCardByDeck(Card aCard, String deckName) {
+	public Card findCardByDeck(CardDTO aCard, String deckName) {
 		Deck aDeck = deckRepo.findByNameAndUser(deckName, userData);
 		Card auxCard = null;
 		if (aDeck != null && aCard != null){
@@ -125,7 +124,7 @@ public class SimpleManager implements Manager{
 	}
 
 	@Override
-	public int countCardsByDeck(Card aCard, String deckName) {
+	public int countCardsByDeck(CardDTO aCard, String deckName) {
 		int result = 0;
 		
 		Card auxCard = findCardByDeck(aCard, deckName);

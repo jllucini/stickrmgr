@@ -10,7 +10,9 @@ import org.springframework.util.Assert;
 
 import com.jll.stickrmgr.db.UserRepository;
 import com.jll.stickrmgr.domain.Card;
-import com.jll.stickrmgr.domain.Deck; 
+import com.jll.stickrmgr.domain.CardDTO;
+import com.jll.stickrmgr.domain.Deck;
+import com.jll.stickrmgr.domain.DeckDTO;
 import com.jll.stickrmgr.domain.UserData;
 import com.jll.stickrmgr.system.Manager;
 
@@ -28,28 +30,26 @@ public class StickerMgmt {
 	@Autowired
 	UserRepository userRepo;
 	
-	private Card aCard;
+	private CardDTO aCard;
 	private Deck aDeck;
 	private UserData userData;
 	
 	@Before("@AddDeck")
 	public void beforeScenario(){
-		aDeck = new Deck("uefa2016b");
+		DeckDTO deck = new DeckDTO("uefa2016b");
 		userData = new UserData("joseluis1", "abcd123");
-		userRepo.save(userData);
 		manager.loginUser(userData);
-		manager.createDeck(aDeck);
+		manager.createDeck(deck);
 	}
 	
 	@After("@RemoveDeck")
 	public void afterScenario() {
 		for (Card card : manager.findCardsByDeckName(aDeck.getName())){
-			manager.removeCardByDeck(card, aDeck.getName());
+			manager.removeCardByDeck(card.getDTO(), aDeck.getName());
 		}
 		
 		manager.removeDeckByName(aDeck.getName());
-		//manager.logoutUser(userData);
-		
+		manager.logoutUser(userData);		
 	}
 
 	@Given("^I am another registered user$")
@@ -60,8 +60,8 @@ public class StickerMgmt {
 	}
 
 	@Given("^I have got a sticker$")
-	public void i_have_got_a_sticker(List<Card> card) throws Throwable {
-		for (Card auxCard : card) {
+	public void i_have_got_a_sticker(List<CardDTO> card) throws Throwable {
+		for (CardDTO auxCard : card) {
 			aCard = auxCard;
         }
 	}
@@ -74,15 +74,15 @@ public class StickerMgmt {
 
 	@Then("^I add the sticker to the deck$")
 	public void i_add_the_sticker_to_the_deck() throws Throwable {
-	    int nCards = manager.addCardToDeck(aDeck.getName(), aCard);
-	    Assert.isTrue(nCards > 0);
+		int nCardsBefore = manager.countCardsByDeck(aCard, aDeck.getName());
+	    int nCardsAfter  = manager.addCardToDeck(aCard, aDeck.getName());
+	    Assert.isTrue(nCardsAfter > nCardsBefore);
 	}
 
 	@Then("^I remove the sticker from the deck$")
 	public void i_remove_the_sticker_from_the_deck() throws Throwable {
 		int nCardsBefore = manager.countCardsByDeck(aCard, aDeck.getName());
-		manager.removeCardByDeck(aCard, aDeck.getName());
-	    int nCardsAfter  = manager.countCardsByDeck(aCard, aDeck.getName());
+		int nCardsAfter  = manager.removeCardByDeck(aCard, aDeck.getName());
 	    Assert.isTrue(nCardsBefore > nCardsAfter);
 	}
 	

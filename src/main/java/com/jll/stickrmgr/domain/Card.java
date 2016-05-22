@@ -8,18 +8,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-public class Card implements Serializable {
+@Table(name = "card")
+public class Card  {
 	
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -43,23 +41,15 @@ public class Card implements Serializable {
 		this.code = code;
 		this.description = description;
 		this.deck = deck;
-		this.count = -1;
-	}
-	
-	public void setDeck(Deck aDeck){
-		deck = aDeck;
+		this.count = 1;
 	}
 	
 	public Long getId() {
 		return id;
 	}
-
-	public String getCode() {
-		return code;
-	}
 	
-	public String getDescription() {
-		return description;
+	public void setDeck(Deck aDeck){
+		deck = aDeck;
 	}
 	
 	public Deck getDeck(){
@@ -81,4 +71,9 @@ public class Card implements Serializable {
 	public void substractCount() {
 		this.count -= 1;
 	}
+	
+	public CardDTO getDTO(){
+		return new CardDTO(this.code, this.description);
+	}
+	
 }

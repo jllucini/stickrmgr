@@ -18,4 +18,6 @@ import com.jll.stickrmgr.domain.UserData;
 public interface UserRepository  extends JpaRepository<UserData, Long>{
 	
 	UserData save (UserData userData);
+	
+	void delete (UserData userData);
 }

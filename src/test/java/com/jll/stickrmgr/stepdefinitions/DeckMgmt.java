@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.util.Assert;
+
+import com.jll.stickrmgr.db.UserRepository;
 import com.jll.stickrmgr.domain.*;
 import com.jll.stickrmgr.system.Manager;
 import cucumber.api.PendingException;
@@ -25,7 +27,7 @@ public class DeckMgmt {
 	@Given("^I am a registered user$")
 	public void i_am_a_registered_user(List<UserData> user) throws Throwable {
 		for (UserData userData : user) {
-			//manager.loginUser(userData);
+			manager.loginUser(userData);			
         }
 	}
 
@@ -43,7 +45,7 @@ public class DeckMgmt {
 
 	@Then("^The system creates a valid empty deck$")
 	public void the_system_creates_a_valid_empty_deck() throws Throwable {
-		Deck aDeck = new Deck(deckName); 
+		DeckDTO aDeck = new DeckDTO(deckName); 
 		manager.createDeck(aDeck);
 	}
 
