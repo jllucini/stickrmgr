@@ -25,7 +25,7 @@ public class DeckMgmt {
 	@Given("^I am a registered user$")
 	public void i_am_a_registered_user(List<UserData> user) throws Throwable {
 		for (UserData userData : user) {
-			manager.loginUser(userData);
+			//manager.loginUser(userData);
         }
 	}
 
@@ -36,7 +36,7 @@ public class DeckMgmt {
 		deckName = name;
 	}
 
-	@When("^The name is valid$")
+	@And("^The name is valid$")
 	public void the_name_is_valid() throws Throwable {
 	    Assert.isTrue(manager.isValidNewDeckName(deckName));
 	}
@@ -47,7 +47,7 @@ public class DeckMgmt {
 		manager.createDeck(aDeck);
 	}
 
-	@When("^The name is invalid$")
+	@But("^The name is invalid$")
 	public void the_name_is_invalid() throws Throwable {
 	    Assert.isTrue(!manager.isValidNewDeckName(deckName));
 	}
@@ -63,7 +63,7 @@ public class DeckMgmt {
 		deckName = name;
 	}
 
-	@When("^The deck exists and request confirmation$")
+	@And("^The deck exists and request confirmation$")
 	public void the_deck_exists_and_request_confirmation() throws Throwable {
 	    Assert.isTrue(manager.isExistingDeckName(deckName));
 	}
@@ -73,13 +73,13 @@ public class DeckMgmt {
 	    manager.removeDeckByName(deckName);
 	}
 
-	@Then("^A confirmation message is provided$")
+	@And("^A confirmation message is provided$")
 	public void a_confirmation_message_is_provided() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
 	
-	@When("^The deck doesnt exist$")
+	@But("^The deck doesnt exist$")
 	public void the_deck_doesnt_exist() throws Throwable {
 		boolean b = manager.isExistingDeckName(deckName);
 	    Assert.isTrue(!b);
