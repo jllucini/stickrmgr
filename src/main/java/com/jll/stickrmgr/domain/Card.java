@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -29,7 +30,7 @@ public class Card implements Serializable {
 	@Column(name="descr")
 	private String description;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="deck_id")
 	private Deck deck;
 	
@@ -42,7 +43,7 @@ public class Card implements Serializable {
 		this.code = code;
 		this.description = description;
 		this.deck = deck;
-		this.count = 1;
+		this.count = -1;
 	}
 	
 	public void setDeck(Deck aDeck){

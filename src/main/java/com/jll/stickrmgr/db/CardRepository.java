@@ -14,9 +14,9 @@ public interface CardRepository extends JpaRepository<Card, Long>{
 	
 	Card save(Card card);
 	
-	List<Card> findByDeck(String deck);
+	List<Card> findByDeck(Deck aDeck);
 	
-	Card findByCode(String code);
+	Card findByCodeAndDeck(String code, Deck deck);
 	
 	int countByDeckAndCode(Deck deck, String code);
 }
