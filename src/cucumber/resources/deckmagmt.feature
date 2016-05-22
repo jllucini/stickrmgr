@@ -10,7 +10,7 @@ Feature: Deck Management
 	Scenario: Successful Deck Creation
 	When I request to create a deck with name "uefa2016"
 	And  The name is valid
-	Then The system creates a valid empty deck  
+	Then The system creates a valid empty deck
 	 
 	Scenario Outline: Incorrect Deck Creation
 	When I request to create a deck with name "<deckname>"
