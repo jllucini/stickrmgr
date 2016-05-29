@@ -11,6 +11,8 @@ public class CardDTO  implements Serializable{
 
 	private String description;
 	
+	public CardDTO() {}
+	
 	public CardDTO(String code, String description) {
 		this.code = code;
 		this.description = description;

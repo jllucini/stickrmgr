@@ -8,6 +8,8 @@ public class DeckDTO  implements Serializable {
 	
 	private String name;
 	
+	public DeckDTO() {}
+	
 	public DeckDTO(String name) {
 		this.name = name;
 	}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div id="f_deck">
+		<form action="/deck/register" method="post" th:object="${deckDTO}">
+			<label>Deck name:</label>
+			<input id="f_name" placeholder="Type here" required="required" name="name" th:field="*{name}"/>
+			<input id="f_submit" type="submit" name="Crear" />
+		</form>
+	</div>
+	<div id="msgs">
+	</div>
+</body>
+</html>
