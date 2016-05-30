@@ -16,7 +16,7 @@ import com.jll.stickrmgr.domain.UserData;
 @Service
 public class SimpleManager implements Manager{
 
-	private UserData userData;
+	private static UserData userData; 
 
 	@Autowired
 	DeckRepository deckRepo;
@@ -32,20 +32,26 @@ public class SimpleManager implements Manager{
 	@Override
 	public void loginUser(UserData userData) {
 		// TO review
-		this.userData = userData;
+		System.out.println("**** loginUser: "+userData.getUsername());
+		SimpleManager.userData = userData;
 		userRepo.save(userData);
 	}
 
 	@Override
 	public void logoutUser(UserData userName) {
 		// To review
-		this.userData = null;
+		SimpleManager.userData = null;
 	}
 	
 	// Operations by Deck
 	
 	@Override
 	public long createDeck(DeckDTO deckDTO){
+		// TO REVIEW : Validate From post without previous login
+		if (userData == null){
+			this.loginUser(new UserData("joseluis", "password"));
+		}
+		System.out.println("**** createDeck: "+deckDTO.getName()+ ", "+userData.getUsername());
 		Deck deck = new Deck(deckDTO.getName(), userData);
 		deckRepo.save(deck);
 		return 0;
@@ -58,6 +64,7 @@ public class SimpleManager implements Manager{
 
 	@Override
 	public Deck findDeckByName(String deckName){
+		System.out.println("**** findDeckByName: "+deckName+ ", "+userData.getUsername());
 		return deckRepo.findByNameAndUser(deckName, userData);
 	}
 	

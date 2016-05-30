@@ -54,6 +54,13 @@ dependencies {
 	testCompile('info.cukes:cucumber-junit:1.2.4')
 	testCompile('info.cukes:cucumber-spring:1.2.4')  
 	
+	// SELENIUM
+	testCompile('org.seleniumhq.selenium:selenium-firefox-driver:2.53.0')
+	testCompile('org.seleniumhq.selenium:selenium-support:2.53.0')
+	testCompile('org.seleniumhq.selenium:selenium-java:2.53.0')
+
+	
+	
 	// Cucumber
 	cucumberCompile 'info.cukes:cucumber-java:1.2.4'
 }

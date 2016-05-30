@@ -24,7 +24,7 @@ public class UserData {
 	
 	public UserData(){}
 	
-	public UserData(String userName, String aPassw) {
+	public UserData(String userName, String aPassw) { 
 		username = userName;
 		password = aPassw;
 	}

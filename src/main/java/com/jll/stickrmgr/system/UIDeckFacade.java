@@ -24,9 +24,9 @@ public interface UIDeckFacade {
 	    }
 	}
 	
-    public String requestCreateDeck(DeckDTO deck);
+    public String viewCreateDeckForm(DeckDTO deck);
 
-    public String requestRemoveDeck(DeckDTO deck);
+    public String viewRemoveDeckForm(DeckDTO deck);
 
     public String displayFeedback(MsgType type, Messages msg);
 

@@ -11,6 +11,8 @@ import org.springframework.util.Assert;
 import com.jll.stickrmgr.db.UserRepository;
 import com.jll.stickrmgr.domain.*;
 import com.jll.stickrmgr.system.Manager;
+import com.jll.stickrmgr.test.BrowserDeckActions;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*; 
 
@@ -21,7 +23,10 @@ public class DeckMgmt {
 	@Autowired
 	private Manager manager ;
 	
-	private String deckName;
+	@Autowired
+	private BrowserDeckActions browser;
+	
+	private DeckDTO deck;
 	
 	
 	@Given("^I am a registered user$")
@@ -34,24 +39,30 @@ public class DeckMgmt {
 	// Deck Creation
 	
 	@When("^I request to create a deck with name \"([^\"]*)\"$")
-	public void i_request_to_create_a_deck_with_name(String name) throws Throwable {
-		deckName = name;
+	public void i_request_to_create_a_deck_with_name(DeckDTO aDeck) throws Throwable {
+		deck = aDeck;
+		browser.viewCreateDeckForm(deck);
 	}
 
 	@And("^The name is valid$")
 	public void the_name_is_valid() throws Throwable {
-	    Assert.isTrue(manager.isValidNewDeckName(deckName));
+		// OLD: Without Selenium
+	    	// Assert.isTrue(manager.isValidNewDeckName(deck.getName()));
 	}
 
 	@Then("^The system creates a valid empty deck$")
 	public void the_system_creates_a_valid_empty_deck() throws Throwable {
-		DeckDTO aDeck = new DeckDTO(deckName); 
-		manager.createDeck(aDeck);
+		// OLD: Without Selenium
+		   // manager.createDeck(deck);
+		// NEW: The deck is created through Selenium interaction
+		System.out.println("********** the_system_creates_a_valid_empty_deck: 1- "+deck.getName());
+		System.out.println("********** the_system_creates_a_valid_empty_deck: 2- "+manager.findDeckByName(deck.getName()));
+		Assert.isTrue(deck.getName().equals(manager.findDeckByName(deck.getName()).getName()));
 	}
 
 	@But("^The name is invalid$")
 	public void the_name_is_invalid() throws Throwable {
-	    Assert.isTrue(!manager.isValidNewDeckName(deckName));
+	    Assert.isTrue(!manager.isValidNewDeckName(deck.getName()));
 	}
 
 	@Then("^The system refuses the create action$")
@@ -61,18 +72,18 @@ public class DeckMgmt {
 	
 	// Deck removal
 	@When("^I request to remove a deck with name \"([^\"]*)\"$")
-	public void i_request_to_remove_a_deck_with_name(String name) throws Throwable {
-		deckName = name;
+	public void i_request_to_remove_a_deck_with_name(DeckDTO aDeck) throws Throwable {
+		deck = aDeck;
 	}
 
 	@And("^The deck exists and request confirmation$")
 	public void the_deck_exists_and_request_confirmation() throws Throwable {
-	    Assert.isTrue(manager.isExistingDeckName(deckName));
+	    Assert.isTrue(manager.isExistingDeckName(deck.getName()));
 	}
 	
 	@Then("^The system removes the deck$")
 	public void the_system_removes_the_deck() throws Throwable {
-	    manager.removeDeckByName(deckName);
+	    manager.removeDeckByName(deck.getName());
 	}
 
 	@And("^A confirmation message is provided$")
@@ -83,7 +94,7 @@ public class DeckMgmt {
 	
 	@But("^The deck doesnt exist$")
 	public void the_deck_doesnt_exist() throws Throwable {
-		boolean b = manager.isExistingDeckName(deckName);
+		boolean b = manager.isExistingDeckName(deck.getName());
 	    Assert.isTrue(!b);
 	}
 

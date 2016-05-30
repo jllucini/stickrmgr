@@ -25,4 +25,12 @@ public class CardDTO  implements Serializable{
 	public String getDescription() {
 		return description;
 	}
+	
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }

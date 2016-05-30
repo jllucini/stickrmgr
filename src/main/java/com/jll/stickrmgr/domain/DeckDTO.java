@@ -2,7 +2,7 @@ package com.jll.stickrmgr.domain;
 
 import java.io.Serializable;
 
-public class DeckDTO  implements Serializable {
+public class DeckDTO  implements Serializable { 
 
 	private static final long serialVersionUID = 9370354750747991L;
 	
@@ -16,5 +16,9 @@ public class DeckDTO  implements Serializable {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 }

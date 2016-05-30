@@ -3,10 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div id="f_deck">
-		<form action="/deck/register" method="post" th:object="${deckDTO}">
+		<form th:action="@{/deck/register}" method="POST" th:object="${deckDTO}">
 			<label>Deck name:</label>
-			<input id="f_name" placeholder="Type here" required="required" name="name" th:field="*{name}"/>
-			<input id="f_submit" type="submit" name="Crear" />
+			<input type="text"   id="f_name" placeholder="Type here" required="required" th:field="*{name}"/>
+			<input type="submit" id="f_submit"  name="Create" />
 		</form>
 	</div>
 	<div id="msgs">
