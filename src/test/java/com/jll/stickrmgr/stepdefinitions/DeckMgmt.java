@@ -41,22 +41,16 @@ public class DeckMgmt {
 	@When("^I request to create a deck with name \"([^\"]*)\"$")
 	public void i_request_to_create_a_deck_with_name(DeckDTO aDeck) throws Throwable {
 		deck = aDeck;
-		browser.viewCreateDeckForm(deck);
 	}
 
 	@And("^The name is valid$")
 	public void the_name_is_valid() throws Throwable {
-		// OLD: Without Selenium
-	    	// Assert.isTrue(manager.isValidNewDeckName(deck.getName()));
+		Assert.isTrue(manager.isValidNewDeckName(deck.getName()));
 	}
 
 	@Then("^The system creates a valid empty deck$")
 	public void the_system_creates_a_valid_empty_deck() throws Throwable {
-		// OLD: Without Selenium
-		   // manager.createDeck(deck);
-		// NEW: The deck is created through Selenium interaction
-		System.out.println("********** the_system_creates_a_valid_empty_deck: 1- "+deck.getName());
-		System.out.println("********** the_system_creates_a_valid_empty_deck: 2- "+manager.findDeckByName(deck.getName()));
+		browser.viewCreateDeckForm(deck, null);
 		Assert.isTrue(deck.getName().equals(manager.findDeckByName(deck.getName()).getName()));
 	}
 
@@ -67,7 +61,10 @@ public class DeckMgmt {
 
 	@Then("^The system refuses the create action$")
 	public void the_system_refuses_the_create_action() throws Throwable {
-	    throw new PendingException();
+		Deck d1 = manager.findDeckByName(deck.getName());
+		browser.viewCreateDeckForm(deck, null);
+		Deck d2 = manager.findDeckByName(deck.getName());
+		Assert.isTrue(d1.equals(d2));
 	}
 	
 	// Deck removal

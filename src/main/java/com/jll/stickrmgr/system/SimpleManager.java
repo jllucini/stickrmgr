@@ -2,6 +2,8 @@ package com.jll.stickrmgr.system;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jll.stickrmgr.db.DeckRepository;
@@ -15,7 +17,9 @@ import com.jll.stickrmgr.domain.UserData;
 
 @Service
 public class SimpleManager implements Manager{
-
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(SimpleManager.class);
+	
 	private static UserData userData; 
 
 	@Autowired
@@ -32,9 +36,9 @@ public class SimpleManager implements Manager{
 	@Override
 	public void loginUser(UserData userData) {
 		// TO review
-		System.out.println("**** loginUser: "+userData.getUsername());
 		SimpleManager.userData = userData;
 		userRepo.save(userData);
+		LOGGER.info("{} -> User logged {}", "loginUser", userData.getUsername());
 	}
 
 	@Override
@@ -51,9 +55,9 @@ public class SimpleManager implements Manager{
 		if (userData == null){
 			this.loginUser(new UserData("joseluis", "password"));
 		}
-		System.out.println("**** createDeck: "+deckDTO.getName()+ ", "+userData.getUsername());
 		Deck deck = new Deck(deckDTO.getName(), userData);
 		deckRepo.save(deck);
+		LOGGER.info("{} -> Deck created {} with user {}", "createDeck", deckDTO.getName(),userData.getUsername());
 		return 0;
 	}
 	
@@ -64,7 +68,6 @@ public class SimpleManager implements Manager{
 
 	@Override
 	public Deck findDeckByName(String deckName){
-		System.out.println("**** findDeckByName: "+deckName+ ", "+userData.getUsername());
 		return deckRepo.findByNameAndUser(deckName, userData);
 	}
 	
