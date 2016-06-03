@@ -3,6 +3,7 @@ package com.jll.stickrmgr.test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import com.jll.stickrmgr.domain.DeckDTO;
@@ -20,14 +21,19 @@ public class BrowserDeckActions implements UIDeckFacade {
 		input.sendKeys(deck.getName());
 		WebElement submit = webDriver.findElement(By.id("f_submit"));
 		submit.click();
-		webDriver.close();
 		return "";
 	}
 
 	@Override
-	public String viewRemoveDeckForm(DeckDTO deck) {
-		// TODO Auto-generated method stub
-		return null;
+	public String viewRemoveDeckForm(String deckName) {
+		webDriver.get("http://localhost:8080/deck/remove");
+		By cssSelector = By.cssSelector("input[value='uefa2016']:first-child");
+		WebElement input = webDriver.findElement(cssSelector);
+		input.click();
+		WebElement submit = webDriver.findElement(By.id("f_submit"));
+		submit.click();
+		webDriver.close();
+		return "";
 	}
 
 	@Override

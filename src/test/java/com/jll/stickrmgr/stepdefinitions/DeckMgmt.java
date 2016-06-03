@@ -61,10 +61,7 @@ public class DeckMgmt {
 
 	@Then("^The system refuses the create action$")
 	public void the_system_refuses_the_create_action() throws Throwable {
-		Deck d1 = manager.findDeckByName(deck.getName());
-		browser.viewCreateDeckForm(deck, null);
-		Deck d2 = manager.findDeckByName(deck.getName());
-		Assert.isTrue(d1.equals(d2));
+		Assert.isTrue(!manager.createDeck(deck));		
 	}
 	
 	// Deck removal
@@ -80,7 +77,8 @@ public class DeckMgmt {
 	
 	@Then("^The system removes the deck$")
 	public void the_system_removes_the_deck() throws Throwable {
-	    manager.removeDeckByName(deck.getName());
+		browser.viewRemoveDeckForm(deck.getName());
+	    Assert.isNull(manager.findDeckByName(deck.getName()));
 	}
 
 	@And("^A confirmation message is provided$")

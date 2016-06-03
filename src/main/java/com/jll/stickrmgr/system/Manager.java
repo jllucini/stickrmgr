@@ -20,12 +20,13 @@ public interface Manager {
 	
 	// Operations by Deck
 	
-	long createDeck(DeckDTO deck);
+	boolean createDeck(DeckDTO deck);
 	void removeDeckByName(String deckName);
 	Deck findDeckByName(String name);
 	boolean isValidNewDeckName(String name);
 	boolean isExistingDeckName(String deckName);
 	int addCardToDeck(CardDTO aCard, String deckName);
+	List<DeckDTO> getDeckList();
 
 	// Card Operations
 	

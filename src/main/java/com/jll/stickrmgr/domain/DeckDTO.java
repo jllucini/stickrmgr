@@ -14,6 +14,10 @@ public class DeckDTO  implements Serializable {
 		this.name = name;
 	}
 	
+	public DeckDTO(Deck deck) {
+		name = deck.getName();
+	}
+
 	public String getName() {
 		return name;
 	}

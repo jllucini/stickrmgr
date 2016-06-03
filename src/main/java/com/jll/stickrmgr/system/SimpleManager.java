@@ -1,5 +1,6 @@
 package com.jll.stickrmgr.system;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ public class SimpleManager implements Manager{
 		// TO review
 		SimpleManager.userData = userData;
 		userRepo.save(userData);
-		LOGGER.info("{} -> User logged {}", "loginUser", userData.getUsername());
+		LOGGER.info("** {} -> User logged {}", "loginUser", userData.getUsername());
 	}
 
 	@Override
@@ -50,22 +51,38 @@ public class SimpleManager implements Manager{
 	// Operations by Deck
 	
 	@Override
-	public long createDeck(DeckDTO deckDTO){
+	public boolean createDeck(DeckDTO deckDTO){
 		// TO REVIEW : Validate From post without previous login
 		if (userData == null){
 			this.loginUser(new UserData("joseluis", "password"));
 		}
-		Deck deck = new Deck(deckDTO.getName(), userData);
-		deckRepo.save(deck);
-		LOGGER.info("{} -> Deck created {} with user {}", "createDeck", deckDTO.getName(),userData.getUsername());
-		return 0;
+		
+		boolean result = false; 
+		if (findDeckByName(deckDTO.getName()) == null){
+			Deck deck = new Deck(deckDTO.getName(), userData);
+			deckRepo.save(deck);
+			LOGGER.info("** {} -> Deck created {} with user {}", "createDeck", deckDTO.getName(),userData.getUsername());
+			result = true;
+		} else {
+			LOGGER.info("** {} -> Deck creation failed for name {} with user {}", "createDeck", deckDTO.getName(),userData.getUsername());
+		}
+		return result;
 	}
 	
 	@Override
 	public void removeDeckByName(String deckName) {
 		deckRepo.removeByNameAndUser(deckName, userData);
+		LOGGER.debug("** {} -> Deck removed {} with user {}", "removeDeckByName", deckName,userData.getUsername());
 	}
 
+	@Override
+	public List<DeckDTO> getDeckList() {
+		List<Deck> lDeck = deckRepo.findAll();
+		List<DeckDTO> lDTO = new ArrayList<DeckDTO>();
+		lDeck.forEach(deck -> lDTO.add(new DeckDTO(deck)));
+		return lDTO;
+	}
+	
 	@Override
 	public Deck findDeckByName(String deckName){
 		return deckRepo.findByNameAndUser(deckName, userData);
@@ -144,4 +161,5 @@ public class SimpleManager implements Manager{
 		
 		return result;
 	}
+
 }

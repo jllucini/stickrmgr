@@ -20,6 +20,8 @@ public interface DeckRepository  extends JpaRepository<Deck, Long>{
 	
 	Deck save (Deck deck);
 	
+	@Modifying
+	@Transactional
 	void removeByNameAndUser(String deckName, UserData user);
 	
 	@Query("SELECT d FROM Deck d WHERE d.name = :deckName and d.user = :userData")

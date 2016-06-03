@@ -1,5 +1,6 @@
 package com.jll.stickrmgr.system;
 
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import com.jll.stickrmgr.domain.DeckDTO;
@@ -28,7 +29,7 @@ public interface UIDeckFacade {
 	
     public String viewCreateDeckForm(DeckDTO deck, BindingResult result);
 
-    public String viewRemoveDeckForm(DeckDTO deck);
+    public String viewRemoveDeckForm(String deckName);
 
     public String displayFeedback(MsgType type, Messages msg);
 
