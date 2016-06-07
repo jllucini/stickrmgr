@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
@@ -14,7 +15,13 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 public class SpringMVCConfig
 extends WebMvcConfigurerAdapter {
 
-//	  THYMELEAF	
+	// WEBJARS
+	public void addResourceHandler(ResourceHandlerRegistry registry){
+		registry.addResourceHandler("/webjars/**")
+			.addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
+	
+	// THYMELEAF	
     @Bean
     public TemplateResolver templateResolver() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
