@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 205382648,
+  "duration": 221497249,
   "status": "passed"
 });
 formatter.scenario({
@@ -64,7 +64,7 @@ formatter.match({
   "location": "StickerMgmt.i_have_got_a_sticker(CardDTO\u003e)"
 });
 formatter.result({
-  "duration": 200702010,
+  "duration": 201619598,
   "status": "passed"
 });
 formatter.match({
@@ -77,14 +77,14 @@ formatter.match({
   "location": "StickerMgmt.i_have_a_valid_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 260440492,
+  "duration": 70500909,
   "status": "passed"
 });
 formatter.match({
   "location": "StickerMgmt.i_add_the_sticker_to_the_deck()"
 });
 formatter.result({
-  "duration": 70812363,
+  "duration": 81583581,
   "status": "passed"
 });
 formatter.match({
@@ -97,7 +97,7 @@ formatter.match({
   "location": "StickerMgmt.the_sticker_count_is(int)"
 });
 formatter.result({
-  "duration": 50912719,
+  "duration": 57850034,
   "status": "passed"
 });
 formatter.scenario({
@@ -148,7 +148,7 @@ formatter.match({
   "location": "StickerMgmt.i_have_got_a_sticker(CardDTO\u003e)"
 });
 formatter.result({
-  "duration": 65399661,
+  "duration": 45937401,
   "status": "passed"
 });
 formatter.match({
@@ -161,14 +161,14 @@ formatter.match({
   "location": "StickerMgmt.i_have_a_valid_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 57588761,
+  "duration": 53964508,
   "status": "passed"
 });
 formatter.match({
   "location": "StickerMgmt.i_add_the_sticker_to_the_deck()"
 });
 formatter.result({
-  "duration": 63200748,
+  "duration": 61105486,
   "status": "passed"
 });
 formatter.match({
@@ -181,7 +181,7 @@ formatter.match({
   "location": "StickerMgmt.the_sticker_count_is(int)"
 });
 formatter.result({
-  "duration": 47255648,
+  "duration": 52549250,
   "status": "passed"
 });
 formatter.scenario({
@@ -232,7 +232,7 @@ formatter.match({
   "location": "StickerMgmt.i_have_got_a_sticker(CardDTO\u003e)"
 });
 formatter.result({
-  "duration": 46535459,
+  "duration": 49144891,
   "status": "passed"
 });
 formatter.match({
@@ -245,14 +245,14 @@ formatter.match({
   "location": "StickerMgmt.i_have_a_valid_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 42838452,
+  "duration": 48413955,
   "status": "passed"
 });
 formatter.match({
   "location": "StickerMgmt.i_add_the_sticker_to_the_deck()"
 });
 formatter.result({
-  "duration": 59105995,
+  "duration": 61040927,
   "status": "passed"
 });
 formatter.match({
@@ -265,7 +265,7 @@ formatter.match({
   "location": "StickerMgmt.the_sticker_count_is(int)"
 });
 formatter.result({
-  "duration": 47400039,
+  "duration": 54572306,
   "status": "passed"
 });
 formatter.scenario({
@@ -322,7 +322,7 @@ formatter.match({
   "location": "StickerMgmt.i_have_got_a_sticker(CardDTO\u003e)"
 });
 formatter.result({
-  "duration": 43085558,
+  "duration": 50282452,
   "status": "passed"
 });
 formatter.match({
@@ -335,14 +335,14 @@ formatter.match({
   "location": "StickerMgmt.i_have_a_valid_deck_with_name(String)"
 });
 formatter.result({
-  "duration": 41887942,
+  "duration": 46170965,
   "status": "passed"
 });
 formatter.match({
   "location": "StickerMgmt.i_remove_the_sticker_from_the_deck()"
 });
 formatter.result({
-  "duration": 54677924,
+  "duration": 51434546,
   "status": "passed"
 });
 formatter.match({
@@ -355,11 +355,11 @@ formatter.match({
   "location": "StickerMgmt.the_sticker_count_is(int)"
 });
 formatter.result({
-  "duration": 46024386,
+  "duration": 51164034,
   "status": "passed"
 });
 formatter.after({
-  "duration": 78924174,
+  "duration": 80640206,
   "status": "passed"
 });
 formatter.uri("resources/deckmagmt.feature");
@@ -402,7 +402,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 75259830,
+  "duration": 77870232,
   "status": "passed"
 });
 formatter.scenario({
@@ -438,23 +438,22 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_create_a_deck_with_name(DeckDTO)"
 });
 formatter.result({
-  "duration": 44715214,
+  "duration": 46091108,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_name_is_valid()"
 });
 formatter.result({
-  "duration": 43088870,
+  "duration": 47118897,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_system_creates_a_valid_empty_deck()"
 });
 formatter.result({
-  "duration": 195067957,
-  "error_message": "org.openqa.selenium.NoSuchElementException: Unable to locate element: {\"method\":\"id\",\"selector\":\"f_name\"}\nCommand duration or timeout: 34 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00272.53.0\u0027, revision: \u002735ae25b1534ae328c771e0856c93e187490ca824\u0027, time: \u00272016-03-15 10:43:46\u0027\nSystem info: host: \u0027MacBook-Pro-de-Jose.local\u0027, ip: \u0027192.168.1.38\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.11.4\u0027, java.version: \u00271.8.0_66\u0027\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCapabilities [{applicationCacheEnabled\u003dtrue, rotatable\u003dfalse, handlesAlerts\u003dtrue, databaseEnabled\u003dtrue, version\u003d33.0, platform\u003dMAC, nativeEvents\u003dfalse, acceptSslCerts\u003dtrue, webStorageEnabled\u003dtrue, locationContextEnabled\u003dtrue, browserName\u003dfirefox, takesScreenshot\u003dtrue, javascriptEnabled\u003dtrue, cssSelectorsEnabled\u003dtrue}]\nSession ID: 5a03fdd3-c716-be4f-a03c-6bc084fbfc7d\n*** Element info: {Using\u003did, value\u003df_name}\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:422)\n\tat org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)\n\tat org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:413)\n\tat org.openqa.selenium.By$ById.findElement(By.java:218)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:497)\n\tat org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:103)\n\tat com.sun.proxy.$Proxy80.findElement(Unknown Source)\n\tat org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:188)\n\tat com.jll.stickrmgr.test.BrowserDeckActions.viewCreateDeckForm(BrowserDeckActions.java:20)\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.the_system_creates_a_valid_empty_deck(DeckMgmt.java:53)\n\tat ✽.Then The system creates a valid empty deck(resources/deckmagmt.feature:13)\nCaused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {\"method\":\"id\",\"selector\":\"f_name\"}\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00272.53.0\u0027, revision: \u002735ae25b1534ae328c771e0856c93e187490ca824\u0027, time: \u00272016-03-15 10:43:46\u0027\nSystem info: host: \u0027MacBook-Pro-de-Jose.local\u0027, ip: \u0027192.168.1.38\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.11.4\u0027, java.version: \u00271.8.0_66\u0027\nDriver info: driver.version: unknown\n\tat \u003canonymous class\u003e.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/bj/yg6lpc3570x4b1vm7844bk9h0000gn/T/anonymous5304678106433035670webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)\n\tat \u003canonymous class\u003e.FirefoxDriver.prototype.findElement(file:///var/folders/bj/yg6lpc3570x4b1vm7844bk9h0000gn/T/anonymous5304678106433035670webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10779)\n\tat \u003canonymous class\u003e.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/bj/yg6lpc3570x4b1vm7844bk9h0000gn/T/anonymous5304678106433035670webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)\n\tat \u003canonymous class\u003e.DelayedCommand.prototype.executeInternal_(file:///var/folders/bj/yg6lpc3570x4b1vm7844bk9h0000gn/T/anonymous5304678106433035670webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12666)\n\tat \u003canonymous class\u003e.DelayedCommand.prototype.execute/\u003c(file:///var/folders/bj/yg6lpc3570x4b1vm7844bk9h0000gn/T/anonymous5304678106433035670webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12608)\n",
-  "status": "failed"
+  "duration": 1921822027,
+  "status": "passed"
 });
 formatter.scenarioOutline({
   "line": 15,
@@ -534,7 +533,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 77289480,
+  "duration": 51499218,
   "status": "passed"
 });
 formatter.scenario({
@@ -573,22 +572,22 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_create_a_deck_with_name(DeckDTO)"
 });
 formatter.result({
-  "duration": 46465701,
+  "duration": 48582591,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_name_is_invalid()"
 });
 formatter.result({
-  "duration": 48473583,
-  "error_message": "java.lang.IllegalArgumentException: [Assertion failed] - this expression must be true\n\tat org.springframework.util.Assert.isTrue(Assert.java:68)\n\tat org.springframework.util.Assert.isTrue(Assert.java:80)\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.the_name_is_invalid(DeckMgmt.java:59)\n\tat ✽.But The name is invalid(resources/deckmagmt.feature:17)\n",
-  "status": "failed"
+  "duration": 47426744,
+  "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_system_refuses_the_create_action()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 63914199,
+  "status": "passed"
 });
 formatter.background({
   "line": 5,
@@ -622,7 +621,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 54942259,
+  "duration": 49009644,
   "status": "passed"
 });
 formatter.scenario({
@@ -663,28 +662,30 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_remove_a_deck_with_name(DeckDTO)"
 });
 formatter.result({
-  "duration": 55171679,
+  "duration": 50560726,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_deck_exists_and_request_confirmation()"
 });
 formatter.result({
-  "duration": 42279183,
-  "error_message": "java.lang.IllegalArgumentException: [Assertion failed] - this expression must be true\n\tat org.springframework.util.Assert.isTrue(Assert.java:68)\n\tat org.springframework.util.Assert.isTrue(Assert.java:80)\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.the_deck_exists_and_request_confirmation(DeckMgmt.java:75)\n\tat ✽.And The deck exists and request confirmation(resources/deckmagmt.feature:25)\n",
-  "status": "failed"
+  "duration": 48197546,
+  "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_system_removes_the_deck()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 800898883,
+  "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.a_confirmation_message_is_provided()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 48592546,
+  "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.a_confirmation_message_is_provided(DeckMgmt.java:87)\n\tat ✽.And A confirmation message is provided(resources/deckmagmt.feature:27)\n",
+  "status": "pending"
 });
 formatter.background({
   "line": 5,
@@ -718,7 +719,7 @@ formatter.match({
   "location": "DeckMgmt.i_am_a_registered_user(UserData\u003e)"
 });
 formatter.result({
-  "duration": 44338941,
+  "duration": 44920477,
   "status": "passed"
 });
 formatter.scenario({
@@ -754,21 +755,21 @@ formatter.match({
   "location": "DeckMgmt.i_request_to_remove_a_deck_with_name(DeckDTO)"
 });
 formatter.result({
-  "duration": 42042313,
+  "duration": 39586994,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.the_deck_doesnt_exist()"
 });
 formatter.result({
-  "duration": 40015115,
+  "duration": 47056839,
   "status": "passed"
 });
 formatter.match({
   "location": "DeckMgmt.a_warning_message_is_provided()"
 });
 formatter.result({
-  "duration": 41732706,
+  "duration": 40130080,
   "error_message": "cucumber.api.PendingException: TODO: implement me\n\tat com.jll.stickrmgr.stepdefinitions.DeckMgmt.a_warning_message_is_provided(DeckMgmt.java:99)\n\tat ✽.Then A warning message is provided(resources/deckmagmt.feature:32)\n",
   "status": "pending"
 });

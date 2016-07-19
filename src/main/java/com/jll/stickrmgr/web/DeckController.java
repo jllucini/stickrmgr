@@ -38,7 +38,7 @@ public class DeckController implements UIDeckFacade {
     public String viewCreateDeckForm(@Valid @ModelAttribute DeckDTO aDeck, BindingResult result) {
         if (!result.hasErrors()) {
             manager.createDeck(aDeck);
-            LOGGER.debug("** {} -> User logged {}", "viewCreateDeckForm", aDeck.getName());
+            LOGGER.debug("** {} -> Deck created {}", "viewCreateDeckForm", aDeck.getName());
             return "/deck/register";
         }else{
         	LOGGER.debug("** {} -> Invalid deck name: {}", "viewCreateDeckForm", aDeck.getName());

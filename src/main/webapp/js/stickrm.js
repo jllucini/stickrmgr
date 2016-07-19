@@ -7,8 +7,7 @@ var StickrM = ( function () {
 		console.log( "Send sticker list to backend "+stickrList);
 	};
 	
-	return {
-		
+	return {	
 		sendStickers : _sendStickers
 	};
 	

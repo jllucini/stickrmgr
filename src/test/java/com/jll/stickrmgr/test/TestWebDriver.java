@@ -6,7 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.stereotype.Component;
 
-public class TestWebDriver extends EventFiringWebDriver {  
+public class TestWebDriver extends EventFiringWebDriver {   
 
 	private static FirefoxDriver webDriver;
 	
